@@ -1,0 +1,24 @@
+maxim = []
+def tri(n):
+    new = ''
+    while n > 0:
+        new = str(n % 3) + new
+        n //= 3
+    return new
+
+def twofour(n):
+    n = tri(n)
+    if n.count("2") > 0: n = n + str(tri(n.count("2")))
+    else: n += '0'
+    if n.count("1") > 0: n = n + str(tri(n.count("1")))
+    else: n +='0'
+    if n.count("0") > 0: n = n + str(tri(n.count("0")))
+    else: n+='0'
+    return n
+
+for n in range(1,1000):
+    R = int(twofour(n),3)
+    if R < 1000:
+        maxim.append(n)
+        
+print(max(maxim))
